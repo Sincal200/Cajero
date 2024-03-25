@@ -1,0 +1,110 @@
+<nav class="navbar bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img style="border-radius: 10px;" src="http://unblast.com/wp-content/uploads/2018/08/Credit-Card-Icons.jpg" alt="Logo" width="280" height="180" >
+        </a>
+        <div class="col-md-4">
+            <h1>Cajero</h1>
+          </div>
+          <img src="https://getbootstrap.com/docs/5.2/assets/brand/bootstrap-logo-shadow.png" width="115" height="100">
+      </div> 
+  </nav>
+  
+  <div class="col-md-12 p-2">
+      <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-save"></i> Deposito Propio</button>
+      <div style="margin-left: 25px;" class="d-inline-block"><button  type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal1"><i class="fa fa-save"></i> Retiro</button></div>
+      <table class="table mt-2 table-bordered">
+          <thead class="table-primary">
+            <tr>
+              <th>ID</th>
+              <th>Fecha</th>
+              <th>Tipo</th>
+              <th>Cuenta Origen</th>
+              <th>Cuenta Destino</th>
+              <th>Número Celular</th>
+              <th>Cajero</th>
+              <th>Monto</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of listTransacciones">
+              <td>{{item.transaccionId}}</td>
+              <td>{{item.fecha}}</td>
+              <td>{{item.tipo}}</td>
+              <td>{{item.cuentaId}}</td>
+              <td>{{item.cuentaDestino}}</td>
+              <td>{{item.numeroDepositoID}}</td>
+              <td>{{item.cajeroID}}</td>
+              <td>{{item.monto}}</td>
+
+            </tr>
+          </tbody>
+        </table>
+  </div>
+
+   
+
+<!-- TODO: Modals -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 >Nuevo Deposito</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="newTransaccion()"></button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="formTransacciones">
+                <div class="mb-3 row">
+                    <label class="col-sm-2 col-form-label">Cuenta Origen</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" formControlName="cuentaId">
+                    </div>
+                </div>
+            <div class="mb-3 row">
+              <label class="col-sm-2 col-form-label">Monto</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" formControlName="monto">
+              </div>  
+          </div> 
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal"(click)="list()">Close</button>
+          <button type="button" class="btn btn-success btn-sm" (click)="save()" >Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TODO: Modals -->
+<div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 >Nuevo Retiro</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="newTransaccion()"></button>
+      </div>
+      <div class="modal-body">
+          <form [formGroup]="formTransacciones">
+              <div class="mb-3 row">
+                  <label class="col-sm-2 col-form-label">Cuenta Origen</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" formControlName="cuentaId">
+                  </div>
+              </div>
+          <div class="mb-3 row">
+            <label class="col-sm-2 col-form-label">Monto</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" formControlName="monto">
+            </div>  
+        </div>  
+          </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal"(click)="list()">Close</button>
+        <button type="button" class="btn btn-success btn-sm" (click)="saveRetiro()" >Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+ 
