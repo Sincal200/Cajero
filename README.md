@@ -1,1 +1,1 @@
-Front End Pyecto Cajero
+Front End Proyecto Cajero
