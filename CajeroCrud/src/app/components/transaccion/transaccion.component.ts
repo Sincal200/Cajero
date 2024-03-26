@@ -4,6 +4,8 @@ import { TransaccionService } from '../../service/transaccion.service';
 import { FormControl, FormGroup, FormsModule } from '@angular/forms';
 
 
+
+
 @Component({
   selector: 'app-transaccion',
   templateUrl: './transaccion.component.html',
@@ -50,11 +52,28 @@ export class TransaccionComponent {
     this.formTransacciones.controls['cajeroID'].setValue(1);
     this.transaccionService.saveTransacciones(this.formTransacciones.value).subscribe(resp =>{
     this.list();
+    alert("La operación se realizó con éxito");
       if(resp){
         this.list();
         this.formTransacciones.reset();
       }
-    });
+    },
+    error => {
+      let customErrorMessages = ["La cuenta especificada no existe"];
+      let found = customErrorMessages.find(message => error.error.includes(message));
+    
+      if (found) {
+        alert(found);
+      } else {
+        let parts = error.error.split(':');
+        if (parts.length >= 2) {
+          alert(parts[1].trim());
+        } else {
+          alert(error.error);
+        }
+      }
+    }   
+  );
     this.list();
     this.formTransacciones.reset();
   }
@@ -70,11 +89,28 @@ export class TransaccionComponent {
     this.formTransacciones.controls['cajeroID'].setValue(1);
     this.transaccionService.saveTransacciones(this.formTransacciones.value).subscribe(resp =>{
     this.list();
+    alert("La operación se realizó con éxito");
       if(resp){
         this.formTransacciones.reset();
         this.list();
       }
-    });
+    },
+    error => {
+      let customErrorMessages = ["El saldo es insuficiente","La cuenta especificada no existe"];
+      let found = customErrorMessages.find(message => error.error.includes(message));
+    
+      if (found) {
+        alert(found);
+      } else {
+        let parts = error.error.split(':');
+        if (parts.length >= 2) {
+          alert(parts[1].trim());
+        } else {
+          alert(error.error);
+        }
+      }
+    }   
+  );
     this.list();
     this.formTransacciones.reset();
   }
@@ -89,11 +125,29 @@ export class TransaccionComponent {
     this.formTransacciones.controls['cajeroID'].setValue(1);
     this.transaccionService.saveTransacciones(this.formTransacciones.value).subscribe(resp =>{
     this.list();
+    alert("La operación se realizó con éxito");
       if(resp){
         this.list();
         this.formTransacciones.reset();
       }
-    });
+    },
+    error => {
+      let customErrorMessages = ["El saldo es insuficiente","La cuenta especificada no existe","La cuenta de destino especificada no existe"
+    ,"Debe ingresar almenos un destinatario"];
+      let found = customErrorMessages.find(message => error.error.includes(message));
+    
+      if (found) {
+        alert(found);
+      } else {
+        let parts = error.error.split(':');
+        if (parts.length >= 2) {
+          alert(parts[1].trim());
+        } else {
+          alert(error.error);
+        }
+      }
+    }   
+  );
     this.list();
     this.formTransacciones.reset();
   }
@@ -108,11 +162,29 @@ export class TransaccionComponent {
     this.formTransacciones.controls['cajeroID'].setValue(1);
     this.transaccionService.saveTransacciones(this.formTransacciones.value).subscribe(resp =>{
     this.list();
+    alert("La operación se realizó con éxito");
       if(resp){
         this.list();
         this.formTransacciones.reset();
       }
-    });
+    },
+    error => {
+      let customErrorMessages = ["El saldo es insuficiente","La cuenta especificada no existe","La cuenta de destino especificada no existe"
+    ,"Debe ingresar almenos un destinatario"];
+      let found = customErrorMessages.find(message => error.error.includes(message));
+    
+      if (found) {
+        alert(found);
+      } else {
+        let parts = error.error.split(':');
+        if (parts.length >= 2) {
+          alert(parts[1].trim());
+        } else {
+          alert(error.error);
+        }
+      }
+    }   
+  );
     this.list();
     this.formTransacciones.reset();
   }
